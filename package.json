@@ -1,0 +1,32 @@
+{
+  "name": "@startingevolve/schematics",
+  "version": "1.0.0",
+  "description": "A set of custom angular schematic for better productivity",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "zackautocracy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StartingEvolve/firebase-tools"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@startingevolve"
+  },
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^13.2.3",
+    "@angular-devkit/schematics": "^13.2.3",
+    "typescript": "~4.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.10.0",
+    "jasmine": "^4.0.0"
+  }
+}

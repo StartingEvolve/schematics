@@ -1,0 +1,34 @@
+{
+	"$schema": "http://json-schema.org/schema",
+	"$id": "StoreComponentSchema",
+	"title": "Starting Evolve Observable Store Schema",
+	"type": "object",
+	"description": "Creates a new observable store.",
+	"properties": {
+	  "name": {
+		"type": "string",
+		"description": "The name of the store.",
+		"$default": {
+		  "$source": "argv",
+		  "index": 0
+		},
+		"x-prompt": "What name would you like to use for the store ?"
+	  },
+	  "path": {
+		"type": "string",
+		"format": "path",
+		"description": "The path at which to create the store, relative to the workspace root.",
+		"visible": false
+	  },
+	  "storeMethods": {
+		"description": "Includes boilerplate store methods with custom name",
+		"type": "string",
+		"default": "",
+		"alias": "method",
+		"x-prompt": "Would you like to choose a name for your store methods ?"
+	  }
+	},
+	"required": [
+	  "name"
+	]
+  }

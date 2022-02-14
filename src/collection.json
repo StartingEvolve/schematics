@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema",
+  "schematics": {
+    "store-component": {
+      "aliases": [
+        "st"
+      ],
+      "description": "A schematic for generating observable stores",
+      "factory": "./store-component/index#storeComponent",
+      "schema": "./store-component/schema.json"
+    }
+  }
+}
