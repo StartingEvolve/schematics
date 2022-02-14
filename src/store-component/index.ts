@@ -10,7 +10,7 @@ export function storeComponent(options: any): Rule {
         options.name = basename(options.name as Path);
 		options.path = normalize('/' + dirname(('src/app/core'+'/' + options.name) as Path));
 
-        console.log(options);
+        // console.log(options);
 		const templateSource = apply(
 			url('./files'), [
 				template({
