@@ -2,13 +2,25 @@ import { Injectable } from '@angular/core';
 import { ObservableStore } from '@codewithdan/observable-store';
 import { of } from 'rxjs';
 
-<% if (storeMethods == '' || storeMethods == 'default') {%>
+<% if (storeMethods == '') {%>
 export interface <%= classify(name) %>State {
     
+}
+<% } else if (storeMethods == 'default') {%>
+export interface <%= classify(name) %>State {
+      
+}
+
+export interface <%= classify(name) %> {
+      
 }
 <% } else {%>
 export interface <%= classify(storeMethods) %>State {
       
+}
+    
+export interface <%= classify(storeMethods) %> {
+          
 }
 <% }%>
 
@@ -16,27 +28,22 @@ export interface <%= classify(storeMethods) %>State {
   providedIn: 'root'
 })
 <% if (storeMethods == '' || storeMethods == 'default') {%>
-export class <%= classify(name) %>Store ObservableStore<<%= classify(name) %>State> {
+export class <%= classify(name) %>Store extends ObservableStore<<%= classify(name) %>State> {
 <% } else {%>
-export class <%= classify(name) %>Store ObservableStore<<%= classify(storeMethods) %>State> {
+export class <%= classify(name) %>Store extends ObservableStore<<%= classify(storeMethods) %>State> {
 <% }%>
   constructor() { 
     super({ trackStateHistory: true, logStateChanges: true });
 
-    const initialState = {}
-
+    const initialState = {};
     <% if (storeMethods == '' || storeMethods == 'default') {%>
-        this.setState(initialState, <%= classify(name) %>StoreActions.Initialize<%= classify(name) %>s);
+    this.setState(initialState, <%= classify(name) %>StoreActions.Initialize<%= classify(name) %>s);
     <% } else {%>
-        this.setState(initialState, <%= classify(name) %>StoreActions.Initialize<%= classify(storeMethods) %>s);
+     this.setState(initialState, <%= classify(name) %>StoreActions.Initialize<%= classify(storeMethods) %>s);
     <% }%>
-    
   }
 
-
   <% if(storeMethods == '') {%>
-
-   
   <%} else if (storeMethods == 'default') {%>
     get<%= classify(name) %>() {
         return of(this.getState());
@@ -64,9 +71,7 @@ export class <%= classify(name) %>Store ObservableStore<<%= classify(storeMethod
         this.setState({}, <%= classify(storeMethods) %>StoreActions.Update<%= classify(storeMethods) %>);
     }
   <% }%>
-
 }
-
 
 <% if (storeMethods == '') {%>
 export enum <%= classify(name) %>StoreActions {

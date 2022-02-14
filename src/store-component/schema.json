@@ -24,8 +24,7 @@
 		"description": "Includes boilerplate store methods with custom name",
 		"type": "string",
 		"default": "",
-		"alias": "method",
-		"x-prompt": "Would you like to choose a name for your store methods ?"
+		"alias": "method"
 	  }
 	},
 	"required": [
